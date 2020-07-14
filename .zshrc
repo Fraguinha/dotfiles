@@ -169,6 +169,110 @@ cdf() {
   }
 }
 
+github() {
+    help () {
+    echo "usage: github [ --directory dir ] [ -i language ] [ -l license ] [ -d description ] [ -h homepage ] [ --public ]"
+    echo
+    echo "  --directory dir - Specify directory (default: cwd)"
+    echo
+    echo "  --help          - Show this help menu"
+    echo
+    echo "  -i language     - Specify gitignore"
+    echo "  -l license      - Specify license"
+    echo
+    echo "  -d description  - Specify repository discription"
+    echo "  -h homepage     - Specify repository homepage"
+    echo
+    echo "  --public        - Make repository public"
+  }
+
+  while getopts ":i:l:d:h:-:" option; do
+    case "${option}" in
+      "i")
+        gitignore="${OPTARG}"
+        ;;
+      "l")
+        license="${OPTARG}"
+        ;;
+      "d" | "h" )
+        arguments+=("-${option}" "${OPTARG}")
+        ;;
+      "-")
+        case "${OPTARG}" in
+          "help")
+            help
+            return 0
+          ;;
+          "public")
+            arguments+=("--public")
+          ;;
+          "directory")
+            directory="${OPTARG}"
+          ;;
+          *)
+          echo "github: Invalid option or missing argument: --${OPTARG}"
+          help
+          return 1
+          ;;
+        esac
+        ;;
+      *)
+        echo "github: Invalid option or missing argument: -${OPTARG}"
+        help
+        return 1
+        ;;
+    esac
+  done
+
+  if [[ -z ${directory} ]]; then
+    directory=$(basename "$(pwd)")
+  else
+    mkdir "${directory}"
+    builtin cd "${directory}" || return 1
+  fi
+
+  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && {
+    echo "github: Already in a git repository"
+    return 1
+  }
+
+  [[ -n ${gitignore} ]] && {
+    curl -sfL "https://api.github.com/gitignore/templates/${gitignore}" |\
+    jq --raw-output ".source" >> .gitignore
+    [[ ! -s .gitignore ]] && {
+      echo "github: Invalid .gitignore: ${gitignore}"
+      help
+      rm .gitignore
+      return 1
+    }
+  }
+
+  [[ -n ${license} ]]  && {
+    curl -sfL "https://api.github.com/licenses/${license}" |\
+    jq --raw-output ".body"  > LICENSE
+    [[ ! -s LICENSE ]] && {
+      echo "github: Invalid license: ${license}"
+      help
+      rm LICENSE
+      return 1
+    }
+    sed -i "" \
+    "s/\[year\]/$(date +"%Y")/g;s/\[fullname\]/$(git config user.name)/g" \
+    LICENSE
+  }
+
+  git init
+
+  echo "# ${directory}" > README.md
+
+  git add .
+  git commit -m 'Initial commit'
+
+  gh repo create "${directory}" "${arguments}"
+
+  git push -u origin master
+}
+
 # Ctrl r
 
 bindkey '^r' history-incremental-search-backward
@@ -183,28 +287,6 @@ HISTFILE=~/.zsh_history
 
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
-
-# Enviroment Variables
-
-export DOTFILES=/Users/fraguinha/Github/dotfiles
-
-# Scripts
-
-[[ ! "${PATH}" == */usr/local/bin/scripts* ]] && \
-  export PATH="${PATH:+${PATH}:}/usr/local/bin/scripts" || true
-
-# Android
-
-export ANDROID_SDK="${HOME}/Library/Android/sdk"
-
-[[ ! "${PATH}" == *${ANDROID_SDK}/platform-tools* ]] && \
-  export PATH="${PATH:+${PATH}:}${ANDROID_SDK}/platform-tools" || true
-
-[[ ! "${PATH}" == *${ANDROID_SDK}/emulator* ]] && \
-  export PATH="${PATH:+${PATH}:}${ANDROID_SDK}/emulator" || true
-
-[[ ! "${PATH}" == *${ANDROID_SDK}/tools* ]] && \
-  export PATH="${PATH:+${PATH}:}${ANDROID_SDK}/tools" || true
 
 # Opam
 
