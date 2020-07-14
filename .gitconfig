@@ -1,0 +1,16 @@
+[user]
+  name = João Fraga
+  email = joaoluisfreirefraga@gmail.com
+[core]
+  pager = less
+  editor = nvim
+  excludesfile = ~/.gitignore
+[color]
+  ui = true
+[push]
+  default = current
+[filter "lfs"]
+	process = git-lfs filter-process
+	smudge = git-lfs smudge -- %f
+	clean = git-lfs clean -- %f
+	required = true
