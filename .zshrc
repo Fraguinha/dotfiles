@@ -47,6 +47,9 @@ setopt share_history
 } || true
 
 . /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
+  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=gray,fg=magenta,bold'
+  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=gray,fg=red,bold'
+
   autoload -U history-substring-search-up
   autoload -U history-substring-search-down
 
