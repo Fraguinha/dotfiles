@@ -44,7 +44,7 @@ setopt share_history
   ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
   ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}?%{%G%}"
 
-  ZSH_THEME_GIT_PROMPT_CLEAN=""
+  ZSH_THEME_GIT_PROMPT_CLEAN="%f"
 } || true
 
 . /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
