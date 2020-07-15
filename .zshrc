@@ -42,7 +42,7 @@ setopt share_history
   ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[green]%}%{✚%G%}"
   ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
   ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
-  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}?%{%G%}"
+  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}%{?%G%}"
   ZSH_THEME_GIT_PROMPT_CLEAN=""
 } || true
 
@@ -65,13 +65,11 @@ setopt share_history
 precmd () {
   STATUS=$?
 
-  PROMPT="%F{red}%n%f"
-
-  PROMPT+=" %F{gray}%1~"
+  PROMPT="%F{red}%n%f %F{gray}%1~"
 
   [[ "$(pwd)" != "/" ]] && PROMPT+="/"
 
-  PROMPT+=" %f"
+  PROMPT+="%f "
 
   [[ $(git rev-parse --git-dir 2>/dev/null) ]] && PROMPT+="$(git_super_status) "
 
@@ -89,8 +87,6 @@ precmd () {
 
   unset STATUS
 }
-
-export PROMPT
 
 # Aliases
 
