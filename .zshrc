@@ -6,8 +6,7 @@ autoload -Uz compinit
 compinit
 
 # Zsh style
-
-zstyle ':completion:*:*:*:*:*' menu yes select
+zstyle ':completion:*' menu yes select
 
 # Zsh Options
 
@@ -28,16 +27,26 @@ setopt share_history
 
 # Zsh Plugins
 
-. /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh || true
+. /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && {
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,bold"
+} || true
+
+. /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
+  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=magenta,bold"
+  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
+
+  bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
+} || true
 
 . /usr/local/opt/zsh-git-prompt/zshrc.sh && {
   ZSH_THEME_GIT_PROMPT_PREFIX="["
   ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-  ZSH_THEME_GIT_PROMPT_SEPARATOR="%f"
+  ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
   ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-  ZSH_THEME_GIT_PROMPT_BEHIND=" %{↓%G%}"
-  ZSH_THEME_GIT_PROMPT_AHEAD=" %{↑%G%}"
+  ZSH_THEME_GIT_PROMPT_BEHIND=" %f%{↓%G%}"
+  ZSH_THEME_GIT_PROMPT_AHEAD=" %f%{↑%G%}"
 
   ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[green]%}%{✚%G%}"
   ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
@@ -46,39 +55,22 @@ setopt share_history
   ZSH_THEME_GIT_PROMPT_CLEAN=""
 } || true
 
-. /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
-  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=gray,fg=magenta,bold'
-  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=gray,fg=red,bold'
-
-  autoload -U history-substring-search-up
-  autoload -U history-substring-search-down
-
-  zle -N history-substring-search-up
-  zle -N history-substring-search-down
-
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
-
-  bindkey '^P' history-substring-search-up
-  bindkey '^N' history-substring-search-down
-} || true
-
 # Prompt
 
 precmd () {
   STATUS=$?
 
-  PROMPT="%F{red}%n%f %F{gray}%1~"
+  PROMPT="%F{red}%n%f %1~"
 
   [[ "$(pwd)" != "/" ]] && PROMPT+="/"
 
-  PROMPT+="%f "
+  PROMPT+=" "
 
-  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && PROMPT+="$(git_super_status) "
+  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && PROMPT+="$(git_super_status)%f "
 
   case ${STATUS} in
     "0" | "130")
-      PROMPT+="%F{gray}> %f"
+      PROMPT+="> "
       ;;
     "1")
       PROMPT+="%F{red}> %f"
@@ -130,7 +122,7 @@ alias .7='cd ../../../../../../..'
 alias .8='cd ../../../../../../../..'
 alias .9='cd ../../../../../../../../..'
 
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias tree='tree -a -I ".git"'
 
@@ -269,10 +261,6 @@ github() {
 
   git push -u origin master
 }
-
-# Ctrl r
-
-bindkey '^r' history-incremental-search-backward
 
 # History
 
