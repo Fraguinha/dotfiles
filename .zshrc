@@ -33,7 +33,7 @@ setopt share_history
 . /usr/local/opt/zsh-git-prompt/zshrc.sh && {
   ZSH_THEME_GIT_PROMPT_PREFIX="["
   ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-  ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+  ZSH_THEME_GIT_PROMPT_SEPARATOR="%f"
 
   ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
   ZSH_THEME_GIT_PROMPT_BEHIND=" %{↓%G%}"
@@ -43,8 +43,7 @@ setopt share_history
   ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
   ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
   ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}?%{%G%}"
-
-  ZSH_THEME_GIT_PROMPT_CLEAN="%f"
+  ZSH_THEME_GIT_PROMPT_CLEAN=""
 } || true
 
 . /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
@@ -66,16 +65,15 @@ setopt share_history
 precmd () {
   STATUS=$?
 
-  PROMPT="%F{red}%n %F{gray}%1~"
+  PROMPT="%F{red}%n%f"
 
-  [[ "$(pwd)" != "/" ]] && {
-    PROMPT+="/ %f"
-  } || {
-    PROMPT+=" %f"
-  }
+  PROMPT+=" %F{gray}%1~"
 
-  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && \
-    PROMPT+="$(git_super_status) "
+  [[ "$(pwd)" != "/" ]] && PROMPT+="/"
+
+  PROMPT+=" %f"
+
+  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && PROMPT+="$(git_super_status) "
 
   case ${STATUS} in
     "0" | "130")
