@@ -25,6 +25,12 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt share_history
 
+# History
+
+SAVEHIST=1000000
+HISTSIZE=1000000
+HISTFILE=~/.zsh_history
+
 # Zsh Plugins
 
 . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && {
@@ -85,215 +91,15 @@ precmd () {
 
 # Aliases
 
-alias mkdir='mkdir -p'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-alias l='dirs -v'
-
-alias l0='cd -0'
-alias l1='cd -1'
-alias l2='cd -2'
-alias l3='cd -3'
-alias l4='cd -4'
-alias l5='cd -5'
-alias l6='cd -6'
-alias l7='cd -7'
-alias l8='cd -8'
-alias l9='cd -9'
-
-alias ls='ls -Gv'
-alias ll='ls -lh'
-alias la='ls -lhA'
-alias l.='ls -lhd .*'
-
-alias cd-='cd -'
-alias cd.='cd .'
-alias cd..='cd ..'
-
-alias .2='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
-alias .6='cd ../../../../../..'
-alias .7='cd ../../../../../../..'
-alias .8='cd ../../../../../../../..'
-alias .9='cd ../../../../../../../../..'
-
-alias dotfiles='/usr/local/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-alias tree='tree -a -I ".git"'
-
-alias code='code -r'
-alias v='vim'
-
-type nvim >/dev/null && {
-  alias vim='nvim'
-}
-
-alias f='open -a Finder .'
+if [[ -f ~/.aliases.zsh ]]; then
+  . ~/.aliases.zsh
+fi
 
 # Functions
-chpwd() {
-  echo
-  ls
-  echo
-}
 
-cdf() {
-  target=$(osascript -e \
-    "tell application \"Finder\" to \
-     if (count of Finder windows) > 0 then \
-     get POSIX path of (target of front Finder window as text)")
-  [[ -n "${target}" ]] && {
-    cd "${target}"
-    unset target
-    return 0
-  } || {
-    echo "${0}: No finder window found"
-    unset target
-    return 1
-  }
-}
-
-github() {
-    help () {
-    echo "usage: github [ --directory dir ] [ -i language ] [ -l license ] [ -d description ] [ -h homepage ] [ --public ]"
-    echo
-    echo "  --directory dir - Specify directory (default: cwd)"
-    echo
-    echo "  --help          - Show this help menu"
-    echo
-    echo "  -i language     - Specify gitignore"
-    echo "  -l license      - Specify license"
-    echo
-    echo "  -d description  - Specify repository discription"
-    echo "  -h homepage     - Specify repository homepage"
-    echo
-    echo "  --public        - Make repository public"
-  }
-
-  ignores () {
-    curl -sfL "https://api.github.com/gitignore/templates" |\
-    jq --raw-output ".[]"
-  }
-
-  licenses () {
-    curl -sfL "https://api.github.com/licenses" |\
-    jq --raw-output ".[].key"
-  }
-
-  while getopts ":i:l:d:h:-:" option; do
-    case "${option}" in
-      "i")
-        gitignore="${OPTARG}"
-        ;;
-      "l")
-        license="${OPTARG}"
-        ;;
-      "d" | "h" )
-        arguments+=("-${option}" "${OPTARG}")
-        ;;
-      "-")
-        case "${OPTARG}" in
-          "help")
-            help
-            return 0
-          ;;
-          "ignores")
-            ignores
-            return 0
-          ;;
-          "licenses")
-            licenses
-            return 0
-          ;;
-          "public")
-            arguments+=("--public")
-          ;;
-          "directory")
-            directory="${OPTARG}"
-          ;;
-          *)
-          echo "github: Invalid option or missing argument: --${OPTARG}"
-          help
-          return 1
-          ;;
-        esac
-        ;;
-      *)
-        echo "github: Invalid option or missing argument: -${OPTARG}"
-        help
-        return 1
-        ;;
-    esac
-  done
-
-  if [[ -z ${directory} ]]; then
-    directory=$(basename "$(pwd)")
-  else
-    mkdir "${directory}"
-    builtin cd "${directory}" || return 1
-  fi
-
-  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && {
-    echo "github: Already in a git repository"
-    return 1
-  }
-
-  [[ -n ${gitignore} ]] && {
-    curl -sfL "https://api.github.com/gitignore/templates/${gitignore}" |\
-    jq --raw-output ".source" >> .gitignore
-    [[ ! -s .gitignore ]] && {
-      echo "github: Invalid .gitignore: ${gitignore}"
-      help
-      rm .gitignore
-      return 1
-    }
-  }
-
-  [[ -n ${license} ]]  && {
-    curl -sfL "https://api.github.com/licenses/${license}" |\
-    jq --raw-output ".body"  > LICENSE
-    [[ ! -s LICENSE ]] && {
-      echo "github: Invalid license: ${license}"
-      help
-      rm LICENSE
-      return 1
-    }
-    sed -i "" \
-    "s/\[year\]/$(date +"%Y")/g;s/\[fullname\]/$(git config user.name)/g" \
-    LICENSE
-  }
-
-  if [[ ! -f "README.md" ]]; then
-    echo "# ${directory}" > README.md
-    echo >> README.md
-    echo "This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details" >> README.md
-  fi
-
-  git init
-
-  git add .
-  git commit -m 'Initial commit'
-
-  gh repo create "${directory}" "${arguments}"
-
-  git push -u origin master
-}
-
-# History
-
-SAVEHIST=1000000
-HISTSIZE=1000000
-HISTFILE=~/.zsh_history
-
-# Language settings
-
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
+if [[ -f ~/.functions.zsh ]]; then
+  . ~/.functions.zsh
+fi
 
 # Opam
 
