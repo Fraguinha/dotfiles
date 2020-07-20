@@ -175,6 +175,16 @@ github() {
     echo "  --public        - Make repository public"
   }
 
+  ignores () {
+    curl -sfL "https://api.github.com/gitignore/templates" |\
+    jq --raw-output ".[]"
+  }
+
+  licenses () {
+    curl -sfL "https://api.github.com/licenses" |\
+    jq --raw-output ".[].key"
+  }
+
   while getopts ":i:l:d:h:-:" option; do
     case "${option}" in
       "i")
@@ -190,6 +200,14 @@ github() {
         case "${OPTARG}" in
           "help")
             help
+            return 0
+          ;;
+          "ignores")
+            ignores
+            return 0
+          ;;
+          "licenses")
+            licenses
             return 0
           ;;
           "public")
@@ -250,9 +268,13 @@ github() {
     LICENSE
   }
 
-  git init
+  if [[ ! -f "README.md" ]]; then
+    echo "# ${directory}" > README.md
+    echo >> README.md
+    echo "This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details" >> README.md
+  fi
 
-  echo "# ${directory}" > README.md
+  git init
 
   git add .
   git commit -m 'Initial commit'
