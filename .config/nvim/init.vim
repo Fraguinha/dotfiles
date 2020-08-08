@@ -66,7 +66,7 @@ omap ass <Plug>(textobj-sandwich-auto-a)
 set cursorline
 
 " Line numbering
-set number
+set number relativenumber
 
 " Search settings
 set incsearch
@@ -74,8 +74,9 @@ set ignorecase
 set smartcase
 
 " Indentation settings
-set shiftwidth=2
+set tabstop=2
 set softtabstop=2
+set shiftwidth=2
 set expandtab
 
 " Undo/redo settings
@@ -85,9 +86,6 @@ set undofile
 set nobackup
 set nowritebackup
 
-" Command spacing
-set cmdheight=2
-
 " Terminal settings
 tnoremap <Esc> <C-\><C-n>
 
@@ -96,7 +94,7 @@ tnoremap <Esc> <C-\><C-n>
 " ----------------------------------------------------------
 
 " Leader key
-let mapleader=","
+let mapleader=" "
 
 " Clear screen
 nnoremap <C-l> :nohl<CR><C-L>
@@ -118,6 +116,12 @@ nnoremap Y y$
 " Marks
 nnoremap § `
 
+" Toggle Line numbering
+nnoremap <silent><expr> <leader>#
+  \  ":set "
+  \  .(&relativenumber ? "norelativenumber number" : "relativenumber number")
+  \  ."<CR>"
+
 " ----------------------------------------------------------
 "  Commands
 " ----------------------------------------------------------
@@ -135,15 +139,5 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | PlugInstall --sync | PlugClean 
 " Install missing plugins on start
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | PlugClean | bd
-  \| endif
-
-" ----------------------------------------------------------
-"  VSCode
-" ----------------------------------------------------------
-
-if exists('g:vscode')
-  " VSCode extension
-  nnoremap <C-r> :call VSCodeNotify('workbench.action.openRecent')<CR>
-  nnoremap gb :call VSCodeNotify('workbench.action.navigateBack')<CR>
-endif
+  \  | PlugInstall --sync | PlugClean | bd
+  \  endif
