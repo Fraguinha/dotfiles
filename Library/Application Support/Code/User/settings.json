@@ -164,6 +164,5 @@
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "remote.SSH.showLoginTerminal": true,
   "liveshare.presence": true
 }
