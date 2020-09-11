@@ -20,22 +20,25 @@ cdf() {
 
 github() {
     help () {
-    echo "usage: github [ --directory dir ] [ -i language ] [ -l license ] [ -d description ] [ -h homepage ] [ --public ]"
+    echo "usage: github [ --directory dir ] [ -i gitignore ] [ -l license ] [ -d description ] [ -h homepage ] [ --public ]"
     echo
-    echo "  --directory dir - Specify directory (default: cwd)"
+    echo "  --gitignores    - Show available gitignores"
+    echo "  --licenses      - Show available licenses"
     echo
     echo "  --help          - Show this help menu"
     echo
-    echo "  -i language     - Specify gitignore"
-    echo "  -l license      - Specify license"
+    echo "  --directory dir - Specify directory (default: cwd)"
     echo
-    echo "  -d description  - Specify repository discription"
-    echo "  -h homepage     - Specify repository homepage"
+    echo "  -i gitignore    - Specify gitignore (default: none)"
+    echo "  -l license      - Specify license (default: none)"
+    echo
+    echo "  -d description  - Specify repository discription (default: none)"
+    echo "  -h homepage     - Specify repository homepage (default: none)"
     echo
     echo "  --public        - Make repository public"
   }
 
-  ignores () {
+  gitignores () {
     curl -sfL "https://api.github.com/gitignore/templates" |\
     jq --raw-output ".[]"
   }
@@ -62,8 +65,8 @@ github() {
             help
             return 0
           ;;
-          "ignores")
-            ignores
+          "gitignores")
+            gitignores
             return 0
           ;;
           "licenses")
