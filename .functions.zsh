@@ -20,22 +20,15 @@ cdf() {
 
 github() {
     help () {
-    echo "usage: github [ --directory dir ] [ -i gitignore ] [ -l license ] [ -d description ] [ -h homepage ] [ --public ]"
+    echo "usage: $1 [ -i gitignore ] [ -l license ]"
+    echo
+    echo "  --help          - Show this help menu"
     echo
     echo "  --gitignores    - Show available gitignores"
     echo "  --licenses      - Show available licenses"
     echo
-    echo "  --help          - Show this help menu"
-    echo
-    echo "  --directory dir - Specify directory (default: cwd)"
-    echo
-    echo "  -i gitignore    - Specify gitignore (default: none)"
-    echo "  -l license      - Specify license (default: none)"
-    echo
-    echo "  -d description  - Specify repository discription (default: none)"
-    echo "  -h homepage     - Specify repository homepage (default: none)"
-    echo
-    echo "  --public        - Make repository public"
+    echo "  -i <gitignore>  - Specify gitignore"
+    echo "  -l <license>    - Specify license"
   }
 
   gitignores () {
@@ -48,7 +41,7 @@ github() {
     jq --raw-output ".[].key"
   }
 
-  while getopts ":i:l:d:h:-:" option; do
+  while getopts ":i:l:-:" option; do
     case "${option}" in
       "i")
         gitignore="${OPTARG}"
@@ -56,13 +49,10 @@ github() {
       "l")
         license="${OPTARG}"
         ;;
-      "d" | "h" )
-        arguments+=("-${option}" "${OPTARG}")
-        ;;
       "-")
         case "${OPTARG}" in
           "help")
-            help
+            help $0
             return 0
           ;;
           "gitignores")
@@ -80,29 +70,22 @@ github() {
             directory="${OPTARG}"
           ;;
           *)
-          echo "github: Invalid option or missing argument: --${OPTARG}"
-          help
+          echo "$0: Invalid option or missing argument: --${OPTARG}"
+          help $0
           return 1
           ;;
         esac
         ;;
       *)
-        echo "github: Invalid option or missing argument: -${OPTARG}"
-        help
+        echo "$0: Invalid option or missing argument: -${OPTARG}"
+        help $0
         return 1
         ;;
     esac
   done
 
-  if [[ -z ${directory} ]]; then
-    directory=$(basename "$(pwd)")
-  else
-    mkdir "${directory}"
-    builtin cd "${directory}" || return 1
-  fi
-
   [[ $(git rev-parse --git-dir 2>/dev/null) ]] && {
-    echo "github: Already in a git repository"
+    echo "$0: Already in a git repository"
     return 1
   }
 
@@ -110,8 +93,8 @@ github() {
     curl -sfL "https://api.github.com/gitignore/templates/${gitignore}" |\
     jq --raw-output ".source" >> .gitignore
     [[ ! -s .gitignore ]] && {
-      echo "github: Invalid .gitignore: ${gitignore}"
-      help
+      echo "$0: Invalid .gitignore: ${gitignore}"
+      help $0
       rm .gitignore
       return 1
     }
@@ -121,8 +104,8 @@ github() {
     curl -sfL "https://api.github.com/licenses/${license}" |\
     jq --raw-output ".body"  > LICENSE
     [[ ! -s LICENSE ]] && {
-      echo "github: Invalid license: ${license}"
-      help
+      echo "$0: Invalid license: ${license}"
+      help $0
       rm LICENSE
       return 1
     }
@@ -132,9 +115,11 @@ github() {
   }
 
   if [[ ! -f "README.md" ]]; then
-    echo "# ${directory}" > README.md
-    echo >> README.md
-    echo "This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details" >> README.md
+    echo "# $(basename $(pwd))" > README.md
+    if [[ -f "LICENSE" ]]; then
+      echo >> README.md
+      echo "This project is licensed under the ${license} License - see the [LICENSE](LICENSE) file for details" >> README.md
+    fi
   fi
 
   git init
@@ -142,7 +127,7 @@ github() {
   git add .
   git commit -m 'Initial commit'
 
-  gh repo create "${directory}" "${arguments}"
+  gh repo create
 
   git push -u origin master
 }
