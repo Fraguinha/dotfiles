@@ -33,9 +33,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  // Theme
-  "workbench.colorTheme": "Community Material Theme High Contrast",
-  "workbench.iconTheme": "eq-material-theme-icons-darker",
+  "workbench.iconTheme": "eq-material-theme-icons",
   "workbench.colorCustomizations": {
     "activityBarBadge.background": "#2979FF",
     "activityBar.activeBorder": "#2979FF",
@@ -165,5 +163,6 @@
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "liveshare.presence": true
+  "liveshare.presence": true,
+  "workbench.colorTheme": "Material Theme High Contrast"
 }
