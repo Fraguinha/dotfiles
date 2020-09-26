@@ -34,7 +34,7 @@
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
   // Theme
-  "workbench.colorTheme": "Material Theme Darker High Contrast",
+  "workbench.colorTheme": "Community Material Theme High Contrast",
   "workbench.iconTheme": "eq-material-theme-icons-darker",
   "workbench.colorCustomizations": {
     "activityBarBadge.background": "#2979FF",
@@ -68,6 +68,7 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
+  "editor.formatOnSaveMode": "modifications",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
