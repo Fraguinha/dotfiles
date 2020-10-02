@@ -34,7 +34,7 @@ HISTFILE=~/.zsh_history
 # Zsh Plugins
 
 . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && {
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8,bold"
+  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
 } || true
 
 . /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
