@@ -2,8 +2,7 @@
 
 # Zsh Modules
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 # Zsh style
 zstyle ':completion:*' menu yes select
@@ -33,33 +32,39 @@ HISTFILE=~/.zsh_history
 
 # Zsh Plugins
 
-. /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && {
-  ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
-} || true
+if [[ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  . /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh && {
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=magenta"
+  }
+fi
 
-. /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
-  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=magenta,bold"
-  HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
+if [[ -f /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh ]]; then
+  . /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh && {
+    HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND="fg=magenta,bold"
+    HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND="fg=red,bold"
 
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
-} || true
+    bindkey '^[[A' history-substring-search-up
+    bindkey '^[[B' history-substring-search-down
+  }
+fi
 
-. /usr/local/opt/zsh-git-prompt/zshrc.sh && {
-  ZSH_THEME_GIT_PROMPT_PREFIX="["
-  ZSH_THEME_GIT_PROMPT_SUFFIX="]"
-  ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+if [[ -f /usr/local/opt/zsh-git-prompt/zshrc.sh ]]; then
+  . /usr/local/opt/zsh-git-prompt/zshrc.sh && {
+    ZSH_THEME_GIT_PROMPT_PREFIX="["
+    ZSH_THEME_GIT_PROMPT_SUFFIX="]"
+    ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 
-  ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
-  ZSH_THEME_GIT_PROMPT_BEHIND=" %f%{↓%G%}"
-  ZSH_THEME_GIT_PROMPT_AHEAD=" %f%{↑%G%}"
+    ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[magenta]%}"
+    ZSH_THEME_GIT_PROMPT_BEHIND=" %f%{↓%G%}"
+    ZSH_THEME_GIT_PROMPT_AHEAD=" %f%{↑%G%}"
 
-  ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[green]%}%{✚%G%}"
-  ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
-  ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
-  ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}%{?%G%}"
-  ZSH_THEME_GIT_PROMPT_CLEAN=""
-} || true
+    ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[green]%}%{✚%G%}"
+    ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
+    ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
+    ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[magenta]%}%{?%G%}"
+    ZSH_THEME_GIT_PROMPT_CLEAN=""
+  }
+fi
 
 # Prompt
 
@@ -103,5 +108,6 @@ fi
 
 # Opam
 
-test -r ${HOME}/.opam/opam-init/init.zsh && \
-. ${HOME}/.opam/opam-init/init.zsh &> /dev/null || true
+if [[ -f ~/.opam/opam-init/init.zsh ]]; then
+  . ~/.opam/opam-init/init.zsh
+fi
