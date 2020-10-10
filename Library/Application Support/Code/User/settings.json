@@ -35,6 +35,7 @@
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
   // Theme
+  "workbench.colorTheme": "Ayu Dark Bordered",
   "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.preferredDarkColorTheme": "Ayu Dark Bordered",
   "workbench.iconTheme": "ayu",
@@ -81,7 +82,7 @@
   // source
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
-    "source.fixAll": true
+    "source.fixAll": true,
   },
   // Debug
   "debug.console.fontFamily": "JetBrains Mono, monospace",
@@ -131,17 +132,13 @@
   "css.remoteStyleSheets": [
     "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   ],
-  // Javascript
+  // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.implicitProjectConfig.checkJs": true,
-  // SQL
-  "sqltools.useNodeRuntime": true,
-  // Latex
-  "latex-workshop.view.pdf.viewer": "tab",
+  "typescript.updateImportsOnFileMove.enabled": "always",
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // Extensions
   "extensions.ignoreRecommendations": true,
   "liveshare.presence": true,
-  "workbench.colorTheme": "Ayu Light Bordered",
 }
