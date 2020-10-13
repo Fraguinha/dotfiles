@@ -35,7 +35,7 @@
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
   // Theme
-  "workbench.colorTheme": "Ayu Dark Bordered",
+  "workbench.colorTheme": "Ayu Light Bordered",
   "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.preferredDarkColorTheme": "Ayu Dark Bordered",
   "workbench.iconTheme": "ayu",
@@ -46,7 +46,6 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
-  "editor.formatOnSaveMode": "modifications",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
@@ -82,7 +81,7 @@
   // source
   "editor.codeActionsOnSave": {
     "source.organizeImports": true,
-    "source.fixAll": true,
+    "source.fixAll": true
   },
   // Debug
   "debug.console.fontFamily": "JetBrains Mono, monospace",
@@ -112,7 +111,7 @@
   "java.format.comments.enabled": true,
   // Python
   "python.languageServer": "Pylance",
-  "python.defaultInterpreterPath": "python3",
+  "python.defaultInterpreterPath": "/usr/local/bin/python3",
   "python.formatting.provider": "autopep8",
   "python.analysis.diagnosticPublishDelay": 0,
   "python.linting.pylintUseMinimalCheckers": false,
@@ -132,13 +131,31 @@
   "css.remoteStyleSheets": [
     "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
   ],
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.implicitProjectConfig.checkJs": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "liveshare.presence": true,
+  "liveshare.presence": true
 }
