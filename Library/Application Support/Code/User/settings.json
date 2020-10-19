@@ -1,5 +1,6 @@
 {
   // Window
+  "window.title": "Fraguinha's VSCode${separator}${activeEditorShort}${separator}${rootName}",
   "window.autoDetectColorScheme": true,
   "window.restoreFullscreen": true,
   "window.zoomLevel": 0,
@@ -25,7 +26,6 @@
     "**/node_modules": true
   },
   // Workbench
-  "workbench.tips.enabled": false,
   "workbench.startupEditor": "none",
   "workbench.commandPalette.history": 0,
   "workbench.editor.restoreViewState": true,
@@ -140,13 +140,15 @@
   // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.implicitProjectConfig.checkJs": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "tslint.jsEnable": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  // Json
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
