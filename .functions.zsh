@@ -26,9 +26,9 @@ github() {
       echo "  $1 [options] [flags]"
       echo
       echo "OPTIONS"
-      echo "  -r string    - Specify repository"
-      echo "  -h string    - Specify homepage"
+      echo "  -r string    - Specify repository name"
       echo "  -d string    - Specify description"
+      echo "  -h string    - Specify homepage"
       echo
       echo "  -i string    - Specify gitignore"
       echo "  -l string    - Specify license"
@@ -71,11 +71,11 @@ github() {
       "r")
         repository="${OPTARG}"
         ;;
-      "h")
-        homepage="${OPTARG}"
-        ;;
       "d")
         description="${OPTARG}"
+        ;;
+      "h")
+        homepage="${OPTARG}"
         ;;
       "-")
         case "${OPTARG}" in
