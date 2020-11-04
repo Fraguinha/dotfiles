@@ -20,23 +20,27 @@ cdf() {
 
 github() {
     help () {
-    echo "usage: $1 [ -r repository ] [ -d description ] [ -h homepage ] [ -i gitignore ] [ -l license ]"
+    echo "USAGE"
+    echo "  $1 [options] [flags]"
     echo
-    echo "  --help           - Show this help menu"
+    echo "OPTIONS"
+    echo "  -r string    - Specify repository"
+    echo "  -h string    - Specify homepage"
+    echo "  -d string    - Specify description"
     echo
-    echo "  -r <repository>  - Specify repository"
-    echo "  -h <homepage>    - Specify homepage"
-    echo "  -d <description> - Specify description"
+    echo "  -i string    - Specify gitignore"
+    echo "  -l string    - Specify license"
     echo
-    echo "  -i <gitignore>   - Specify gitignore"
-    echo "  -l <license>     - Specify license"
+    echo "FLAGS"
+    echo "  --help       - Show this help menu"
     echo
-    echo "  --gitignores     - Show available gitignores"
-    echo "  --licenses       - Show available licenses"
+    echo "  --gitignores - Show available gitignores"
+    echo "  --licenses   - Show available licenses"
     echo
-    echo "  --public         - Specify public repository"
-    echo "  --private        - Specify private repository"
-    echo "  --internal       - Specify internal repository"
+    echo "  --public     - Specify public repository"
+    echo "  --private    - Specify private repository"
+    echo "  --internal   - Specify internal repository"
+    echo
   }
 
   gitignores () {
