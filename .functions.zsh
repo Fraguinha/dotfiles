@@ -20,15 +20,23 @@ cdf() {
 
 github() {
     help () {
-    echo "usage: $1 [ -i gitignore ] [ -l license ]"
+    echo "usage: $1 [ -r repository ] [ -d description ] [ -h homepage ] [ -i gitignore ] [ -l license ]"
     echo
-    echo "  --help          - Show this help menu"
+    echo "  --help           - Show this help menu"
     echo
-    echo "  --gitignores    - Show available gitignores"
-    echo "  --licenses      - Show available licenses"
+    echo "  -r <repository>  - Specify repository"
+    echo "  -h <homepage>    - Specify homepage"
+    echo "  -d <description> - Specify description"
     echo
-    echo "  -i <gitignore>  - Specify gitignore"
-    echo "  -l <license>    - Specify license"
+    echo "  -i <gitignore>   - Specify gitignore"
+    echo "  -l <license>     - Specify license"
+    echo
+    echo "  --gitignores     - Show available gitignores"
+    echo "  --licenses       - Show available licenses"
+    echo
+    echo "  --public         - Specify public repository"
+    echo "  --private        - Specify private repository"
+    echo "  --internal       - Specify internal repository"
   }
 
   gitignores () {
@@ -41,13 +49,27 @@ github() {
     jq --raw-output ".[].key"
   }
 
-  while getopts ":i:l:-:" option; do
+  homepage=""
+  description=""
+  visibility="--private"
+  repository="$(basename $(pwd))"
+
+  while getopts ":i:l:r:d:h:-:" option; do
     case "${option}" in
       "i")
         gitignore="${OPTARG}"
         ;;
       "l")
         license="${OPTARG}"
+        ;;
+      "r")
+        repository="${OPTARG}"
+        ;;
+      "h")
+        homepage="${OPTARG}"
+        ;;
+      "d")
+        description="${OPTARG}"
         ;;
       "-")
         case "${OPTARG}" in
@@ -62,6 +84,15 @@ github() {
           "licenses")
             licenses
             return 0
+          ;;
+          "public")
+            visibility="--public"
+          ;;
+          "private")
+            visibility="--private"
+          ;;
+          "internal")
+            visibility="--internal"
           ;;
           *)
           echo "$0: Invalid option or missing argument: --${OPTARG}"
@@ -104,7 +135,7 @@ github() {
       return 1
     }
     sed -i "" \
-    "s/\[year\]/$(date +"%Y")/g;s/\[fullname\]/$(git config user.name)/g" \
+    -e "s/\[year\]/$(date +"%Y")/g" -e "s/\[fullname\]/$(git config user.name)/g" \
     LICENSE
   }
 
@@ -121,7 +152,7 @@ github() {
   git add .
   git commit -m 'Initial commit'
 
-  gh repo create
+  gh repo create ${repository} -h "${homepage}" -d "${description}" ${visibility} --confirm
 
   git push -u origin master
 }
