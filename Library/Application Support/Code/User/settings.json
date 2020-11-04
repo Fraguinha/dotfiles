@@ -1,6 +1,6 @@
 {
   // Window
-  "window.title": "Fraguinha's VSCode${separator}${activeEditorShort}${separator}${rootName}",
+  "window.title": "${appName}${separator}${activeEditorShort}${separator}${rootName}",
   "window.autoDetectColorScheme": true,
   "window.restoreFullscreen": true,
   "window.zoomLevel": 0,
@@ -39,6 +39,8 @@
   "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.preferredDarkColorTheme": "Ayu Dark Bordered",
   "workbench.iconTheme": "ayu",
+  // Neovim
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   // Editor
   "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontLigatures": true,
