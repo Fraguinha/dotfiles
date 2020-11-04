@@ -111,3 +111,8 @@ fi
 if [[ -f ~/.opam/opam-init/init.zsh ]]; then
   . ~/.opam/opam-init/init.zsh
 fi
+
+# Cargo
+if [[ -f ~/.cargo/env ]]; then
+  . ~/.cargo/env
+fi

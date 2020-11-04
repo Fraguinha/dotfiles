@@ -61,9 +61,9 @@
                         ]
                     },
                     {
+                        "description": "Change tab to right_option+right_control if pressed with other keys.",
                         "manipulators": [
                             {
-                                "description": "Change tab to right_option+right_control if pressed with other keys.",
                                 "from": {
                                     "key_code": "tab",
                                     "modifiers": {

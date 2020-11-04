@@ -3,10 +3,10 @@
 " ----------------------------------------------------------
 
 " Bootstrap Vim-plug
-if empty(glob("~/.config/nvim/autoload/plug.vim"))
-  silent !curl -sfLo ~/.config/nvim/autoload/plug.vim --create-dirs
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | bd
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 " Vim-plug
@@ -14,9 +14,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Vim-plug documentation
 Plug 'junegunn/'        . 'vim-plug'
-
-" Autocomplete
-"Plug 'neovim/'          . 'nvim-lsp'
 
 " Theme
 Plug 'morhetz/'         . 'gruvbox'
@@ -29,6 +26,12 @@ Plug 'wellle/'          . 'targets.vim'
 Plug 'jiangmiao/'       . 'auto-pairs'
 
 call plug#end()
+
+" Install missing plugins on start
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \  | PlugInstall --sync | PlugClean | bd
+  \  endif
 
 " ----------------------------------------------------------
 "  Plugin configuration
@@ -65,9 +68,6 @@ omap ass <Plug>(textobj-sandwich-auto-a)
 " Line highlight
 set cursorline
 
-" Line numbering
-set number relativenumber
-
 " Search settings
 set incsearch
 set ignorecase
@@ -85,9 +85,6 @@ set undofile
 " Backup settings
 set nobackup
 set nowritebackup
-
-" Terminal settings
-tnoremap <Esc> <C-\><C-n>
 
 " ----------------------------------------------------------
 "  Keyboard shortcuts
@@ -113,14 +110,12 @@ nnoremap U <C-r>
 " Yank
 nnoremap Y y$
 
+" Paste
+nnoremap <leader>p "_dp
+nnoremap <leader>P "_d"+p
+
 " Marks
 nnoremap § `
-
-" Toggle Line numbering
-nnoremap <silent><expr> <leader>#
-  \  ":set "
-  \  .(&relativenumber ? "norelativenumber number" : "relativenumber number")
-  \  ."<CR>"
 
 " ----------------------------------------------------------
 "  Commands
@@ -135,9 +130,3 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Reload init.vim after saving
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC | PlugInstall --sync | PlugClean | bd
-
-" Install missing plugins on start
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \  | PlugInstall --sync | PlugClean | bd
-  \  endif
