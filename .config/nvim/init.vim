@@ -22,8 +22,8 @@ Plug 'vim-airline/'     . 'vim-airline'
 " Extensions
 Plug 'michaeljsmith/'   . 'vim-indent-object'
 Plug 'machakann/'       . 'vim-sandwich'
+Plug 'justinmk/'        . 'vim-sneak'
 Plug 'wellle/'          . 'targets.vim'
-Plug 'jiangmiao/'       . 'auto-pairs'
 
 call plug#end()
 
@@ -60,6 +60,19 @@ xmap iss <Plug>(textobj-sandwich-auto-i)
 xmap ass <Plug>(textobj-sandwich-auto-a)
 omap iss <Plug>(textobj-sandwich-auto-i)
 omap ass <Plug>(textobj-sandwich-auto-a)
+
+" Sneak
+let g:sneak#absolute_dir = 1
+let g:sneak#use_ic_scs = 1
+let g:sneak#s_next = 1
+
+map ç <Plug>Sneak_s
+map Ç <Plug>Sneak_S
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 " ----------------------------------------------------------
 "  General settings
@@ -100,19 +113,11 @@ nnoremap <C-l> :nohl<CR><C-L>
 nnoremap <C-j> }
 nnoremap <C-k> {
 
-" Macros
-nnoremap QQ @@
-nnoremap Q @
-
 " Undo
 nnoremap U <C-r>
 
 " Yank
 nnoremap Y y$
-
-" Paste
-nnoremap <leader>p "_dp
-nnoremap <leader>P "_d"+p
 
 " Marks
 nnoremap § `
@@ -121,7 +126,7 @@ nnoremap § `
 "  Commands
 " ----------------------------------------------------------
 
-" Disable automatic comments
+" Disable automatic commentsN
 autocmd FileType * setlocal formatoptions-=cro
 autocmd FileType * set formatoptions-=cro
 
