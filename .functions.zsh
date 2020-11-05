@@ -115,11 +115,6 @@ github() {
     esac
   done
 
-  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && {
-    echo "$0: Already in a git repository"
-    return 1
-  }
-
   [[ -n ${gitignore} ]] && {
     curl -sfL "https://api.github.com/gitignore/templates/${gitignore}" |\
     jq --raw-output ".source" >> .gitignore
@@ -153,10 +148,14 @@ github() {
     fi
   fi
 
-  git init
-
-  git add .
-  git commit -m 'Initial commit'
+  [[ $(git rev-parse --git-dir 2>/dev/null) ]] && {
+    echo "$0: Already in a git repository"
+  } || {
+    echo "$0: Initializing git repository"
+    git init
+    git add .
+    git commit -m 'Initial commit'
+  }
 
   gh repo create ${repository} -h "${homepage}" -d "${description}" ${visibility} --confirm
 
