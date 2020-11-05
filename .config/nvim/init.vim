@@ -66,13 +66,13 @@ let g:sneak#absolute_dir = 1
 let g:sneak#use_ic_scs = 1
 let g:sneak#s_next = 1
 
-map ç <Plug>Sneak_s
-map Ç <Plug>Sneak_S
+nmap x <Plug>Sneak_s
+nmap X <Plug>Sneak_S
 
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
 
 " ----------------------------------------------------------
 "  General settings
@@ -83,6 +83,7 @@ set cursorline
 
 " Search settings
 set incsearch
+set nohlsearch
 set ignorecase
 set smartcase
 
@@ -106,9 +107,6 @@ set nowritebackup
 " Leader key
 let mapleader=" "
 
-" Clear screen
-nnoremap <C-l> :nohl<CR><C-L>
-
 " Paragraphs
 nnoremap <C-j> }
 nnoremap <C-k> {
@@ -121,6 +119,25 @@ nnoremap Y y$
 
 " Marks
 nnoremap § `
+
+" Clipboard
+nnoremap <leader>y "*y
+nnoremap <leader>Y "*y$
+nnoremap <leader>yy "*yy
+
+nnoremap <leader>d "*d
+nnoremap <leader>D "*D
+nnoremap <leader>dd "*dd
+
+nnoremap <leader>p "*p
+nnoremap <leader>P "*P
+
+" Space
+nnoremap <space> <nop>
+
+" Delete/Backspace
+nnoremap <del> x
+nnoremap <bs> X
 
 " ----------------------------------------------------------
 "  Commands
