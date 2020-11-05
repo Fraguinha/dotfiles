@@ -1,18 +1,23 @@
 [user]
   name = João Fraga
   email = joaoluisfreirefraga@gmail.com
+	signingkey = 5CB50A9B2DCCE3DD
+[gpg]
+  program = /usr/local/bin/gpg
+[commit]
+	gpgsign = true
+[pull]
+	rebase = false
+[push]
+  default = current
+[color]
+  ui = true
 [core]
   pager = less
   editor = nvim
   excludesfile = ~/.gitignore
-[color]
-  ui = true
-[push]
-  default = current
 [filter "lfs"]
 	process = git-lfs filter-process
 	smudge = git-lfs smudge -- %f
 	clean = git-lfs clean -- %f
 	required = true
-[pull]
-	rebase = false
