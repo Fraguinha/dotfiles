@@ -66,8 +66,8 @@ let g:sneak#absolute_dir = 1
 let g:sneak#use_ic_scs = 1
 let g:sneak#s_next = 1
 
-nmap x <Plug>Sneak_s
-nmap X <Plug>Sneak_S
+nmap ç <Plug>Sneak_s
+nmap Ç <Plug>Sneak_S
 
 nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
