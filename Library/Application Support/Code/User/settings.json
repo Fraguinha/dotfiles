@@ -35,7 +35,7 @@
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
   // Theme
-  "workbench.colorTheme": "Ayu Dark Bordered",
+  "workbench.colorTheme": "Ayu Light Bordered",
   "workbench.preferredLightColorTheme": "Ayu Light Bordered",
   "workbench.preferredDarkColorTheme": "Ayu Dark Bordered",
   "workbench.iconTheme": "ayu",
