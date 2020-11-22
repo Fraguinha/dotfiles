@@ -124,3 +124,7 @@ export PATH="/usr/local/sbin:$PATH"
 # Java
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Haskell
+
+export PATH="$HOME/.cabal/bin:$PATH"
