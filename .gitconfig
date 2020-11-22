@@ -4,6 +4,8 @@
   signingkey = 5CB50A9B2DCCE3DD
 [gpg]
   program = gpg
+[tag]
+  forceSignAnnotated = true
 [commit]
   gpgsign = true
 [pull]
