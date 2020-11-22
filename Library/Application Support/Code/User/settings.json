@@ -34,7 +34,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   // Neovim
@@ -119,7 +119,6 @@
   "python.testing.unittestEnabled": false,
   "python.testing.nosetestsEnabled": false,
   "python.testing.pytestEnabled": true,
-  "python.dataScience.sendSelectionToInteractiveWindow": true,
   // OCaml
   "ocaml.sandbox": {
     "switch": "default",
@@ -143,7 +142,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "tslint.jsEnable": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -116,3 +116,11 @@ fi
 if [[ -f ~/.cargo/env ]]; then
   . ~/.cargo/env
 fi
+
+# Homebrew
+
+export PATH="/usr/local/sbin:$PATH"
+
+# Java
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
