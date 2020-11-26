@@ -159,5 +159,5 @@ github() {
 
   gh repo create ${repository} -h "${homepage}" -d "${description}" ${visibility} --confirm
 
-  git push -u origin master
+  git push -u origin main
 }
