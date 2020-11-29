@@ -27,6 +27,7 @@
   },
   // Workbench
   "workbench.startupEditor": "none",
+  "workbench.editor.tabCloseButton": "left",
   "workbench.commandPalette.history": 0,
   "workbench.editor.restoreViewState": true,
   "workbench.tree.renderIndentGuides": "none",
@@ -34,7 +35,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   // Neovim
