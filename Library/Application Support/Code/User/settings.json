@@ -47,9 +47,9 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnType": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
   "editor.tabCompletion": "on",
   "editor.acceptSuggestionOnEnter": "off",
   // Suggestions
