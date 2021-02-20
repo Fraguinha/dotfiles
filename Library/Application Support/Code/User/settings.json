@@ -3,7 +3,6 @@
   "window.title": "${appName}${separator}${activeEditorShort}${separator}${rootName}",
   "window.autoDetectColorScheme": true,
   "window.restoreFullscreen": true,
-  "window.zoomLevel": 0,
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -23,6 +22,7 @@
     "**/.settings": true,
     "**/.factorypath": true,
     "**/__pycache__": true,
+    "**/.pytest_cache": true,
     "**/node_modules": true
   },
   // Workbench
@@ -38,8 +38,12 @@
   "workbench.colorTheme": "GitHub Dark",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
+  "workbench.editorAssociations": [],
+  // Zen
+  "zenMode.centerLayout": false,
   // Neovim
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.mouseSelectionStartVisualMode": true,
   // Editor
   "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontLigatures": true,
@@ -110,6 +114,7 @@
   "java.codeGeneration.generateComments": true,
   "java.completion.guessMethodArguments": true,
   "java.format.comments.enabled": true,
+  "java.refactor.renameFromFileExplorer": "autoApply",
   // Python
   "python.languageServer": "Pylance",
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
@@ -128,32 +133,18 @@
   // Dart
   "dart.openDevTools": "flutter",
   // HTML & CSS
-  "css.remoteStyleSheets": [
-    "https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-  ],
+  "css.styleSheets": [
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
+    "/style.css",
+    "style.css",
+    "${fileBasenameNoExtension}.css"
+],
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "javascript.implicitProjectConfig.checkJs": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // Json
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // Extensions

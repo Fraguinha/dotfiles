@@ -104,6 +104,9 @@ let mapleader=" "
 nnoremap <C-j> }
 nnoremap <C-k> {
 
+" Macros
+nnoremap Q @
+
 " Undo
 nnoremap U <C-r>
 
