@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/'        . 'vim-plug'
 
 " Theme
-Plug 'morhetz/'         . 'gruvbox'
 Plug 'vim-airline/'     . 'vim-airline'
 
 " Extensions
@@ -20,21 +19,9 @@ Plug 'wellle/'          . 'targets.vim'
 
 call plug#end()
 
-" Install missing plugins on start
-autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \  | PlugInstall --sync | PlugClean | bd
-  \  endif
-
 " ----------------------------------------------------------
 "  Plugin configuration
 " ----------------------------------------------------------
-
-" Theme
-if !empty(glob("~/.config/nvim/plugged/gruvbox/colors/gruvbox.vim"))
-  colorscheme gruvbox
-  set background=dark
-endif
 
 " Sandwich
 runtime macros/sandwich/keymap/surround.vim
@@ -66,32 +53,6 @@ nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
 nmap t <Plug>Sneak_t
 nmap T <Plug>Sneak_T
-
-" ----------------------------------------------------------
-"  General settings
-" ----------------------------------------------------------
-
-" Line highlight
-set cursorline
-
-" Search settings
-set incsearch
-set nohlsearch
-set ignorecase
-set smartcase
-
-" Indentation settings
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-
-" Undo/redo settings
-set undofile
-
-" Backup settings
-set nobackup
-set nowritebackup
 
 " ----------------------------------------------------------
 "  Keyboard shortcuts
@@ -135,6 +96,17 @@ nnoremap <space> <nop>
 nnoremap <del> x
 nnoremap <bs> X
 
+
+" ----------------------------------------------------------
+"  VSCode
+" ----------------------------------------------------------
+
+if exists('g:vscode')
+
+nnoremap <silent> <C-r> <Cmd>call VSCodeNotify('workbench.action.openRecent')<CR>
+
+endif
+
 " ----------------------------------------------------------
 "  Commands
 " ----------------------------------------------------------
@@ -145,6 +117,3 @@ autocmd FileType * set formatoptions-=cro
 
 " Remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
-
-" Reload init.vim after saving
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC | PlugInstall --sync | PlugClean | bd

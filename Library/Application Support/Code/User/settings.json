@@ -13,6 +13,7 @@
   "files.trimFinalNewlines": true,
   "files.enableTrash": true,
   "files.associations": {
+    "*.mli": "ocaml",
     "*.cu": "cpp",
     "*.cuh": "cpp"
   },
@@ -35,7 +36,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   "workbench.editorAssociations": [],
@@ -51,9 +52,9 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wrappingIndent": "deepIndent",
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
   "editor.tabCompletion": "on",
   "editor.acceptSuggestionOnEnter": "off",
   // Suggestions
@@ -115,6 +116,14 @@
   "java.completion.guessMethodArguments": true,
   "java.format.comments.enabled": true,
   "java.refactor.renameFromFileExplorer": "autoApply",
+  "sonarlint.rules": {
+    "java:S106": {
+      "level": "off"
+    },
+    "java:S2189": {
+      "level": "off"
+    }
+  },
   // Python
   "python.languageServer": "Pylance",
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
@@ -126,6 +135,10 @@
   "python.testing.nosetestsEnabled": false,
   "python.testing.pytestEnabled": true,
   // OCaml
+  "ocaml.terminal.shell.osx": "/bin/zsh",
+  "[ocaml]": {
+    "editor.defaultFormatter": "ocamllabs.ocaml-platform"
+  },
   "ocaml.sandbox": {
     "switch": "default",
     "kind": "opam"
@@ -134,20 +147,22 @@
   "dart.openDevTools": "flutter",
   // HTML & CSS
   "css.styleSheets": [
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css",
     "/style.css",
     "style.css",
     "${fileBasenameNoExtension}.css"
-],
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
+  ],
   // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
+  // LaTeX
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.message.update.show": false,
   // Extensions
   "extensions.ignoreRecommendations": true,
-  "liveshare.presence": true
+  "liveshare.presence": true,
+  "liveshare.audio.joinCallBehavior": "accept",
+  "tabnine.experimentalAutoImports": true
 }
