@@ -44,7 +44,6 @@
   "zenMode.centerLayout": false,
   // Neovim
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.mouseSelectionStartVisualMode": true,
   // Editor
   "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontLigatures": true,
