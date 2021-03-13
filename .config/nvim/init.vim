@@ -14,7 +14,7 @@ Plug 'vim-airline/'     . 'vim-airline'
 " Extensions
 Plug 'michaeljsmith/'   . 'vim-indent-object'
 Plug 'machakann/'       . 'vim-sandwich'
-Plug 'easymotion/'      . 'vim-easymotion'
+Plug 'asvetliakov/'     . 'vim-easymotion'
 Plug 'wellle/'          . 'targets.vim'
 
 call plug#end()
@@ -95,6 +95,12 @@ if exists('g:vscode')
 
 " default vscode <C-r> functionality
 nnoremap <silent> <C-r> <Cmd>call VSCodeNotify('workbench.action.openRecent')<CR>
+
+" Comments
+xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
 
 endif
 
