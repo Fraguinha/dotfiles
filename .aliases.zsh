@@ -36,8 +36,6 @@ alias .9='cd ../../../../../../../../..'
 
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias ubuntu='docker run --rm -it -v "$(pwd):/opt" ubuntu:latest'
-
 alias tree='tree -a -I ".git"'
 
 alias code='code -r'
