@@ -14,7 +14,7 @@ Plug 'vim-airline/'     . 'vim-airline'
 " Extensions
 Plug 'michaeljsmith/'   . 'vim-indent-object'
 Plug 'machakann/'       . 'vim-sandwich'
-Plug 'asvetliakov/'     . 'vim-easymotion'
+Plug 'easymotion/'      . 'vim-easymotion'
 Plug 'wellle/'          . 'targets.vim'
 
 call plug#end()
@@ -25,16 +25,6 @@ call plug#end()
 
 " Leader key
 let mapleader=" "
-
-" Paragraphs
-nnoremap <C-j> }
-nnoremap <C-k> {
-
-" Macros
-nnoremap Q @
-
-" Undo
-nnoremap U <C-r>
 
 " Yank
 nnoremap Y y$
@@ -50,10 +40,6 @@ nnoremap <leader>dd "*dd
 
 nnoremap <leader>p "*p
 nnoremap <leader>P "*P
-
-" Delete/Backspace
-nnoremap <del> x
-nnoremap <bs> X
 
 " Highlight
 nnoremap <C-l> :nohl<CR>
