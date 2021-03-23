@@ -39,6 +39,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias tree='tree -a -I ".git"'
 
 alias code='code -r'
+alias vim='nvim'
 alias v='vim'
 
 type nvim >/dev/null && {
