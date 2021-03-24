@@ -32,6 +32,10 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  ["auto-pairs"] = {
+    loaded = true,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/auto-pairs"
+  },
   ["completion-nvim"] = {
     loaded = true,
     path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/completion-nvim"
@@ -60,6 +64,10 @@ _G.packer_plugins = {
   ["vim-easymotion"] = {
     loaded = true,
     path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/vim-easymotion"
+  },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/vim-gitgutter"
   },
   ["vim-indent-object"] = {
     loaded = true,

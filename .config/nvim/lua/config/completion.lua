@@ -4,8 +4,8 @@ local utils = require('utils')
 vim.cmd [[autocmd BufEnter * lua require'completion'.on_attach()]]
 
 -- Use tabs
-utils.map('i', '<tab>', 'pumvisible() ? "<c-n>" : "<tab>"', { noremap = true, expr = true })
-utils.map('i', '<s-tab>', 'pumvisible() ? "<c-p>" : "<s-tab>"', { noremap = true, expr = true })
+utils.map('i', '<tab>', '<plug>(completion_smart_tab)', { noremap = false })
+utils.map('i', '<s-tab>', '<plug>(completion_smart_s_tab)', { noremap = false })
 
 -- Set completeopt to have a better completion experience
 utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')

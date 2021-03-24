@@ -6,7 +6,7 @@ end
 vim.cmd [[packadd packer.nvim]]
 
 -- Auto compile when there are changes in plugins.lua
-vim.cmd [[autocmd BufWritePost plugins.lua PackerSync]]
+vim.cmd [[autocmd BufWritePost plugins.lua PackerCompile]]
 
 -- Plugins
 return require('packer').startup(function()
@@ -17,6 +17,7 @@ return require('packer').startup(function()
   -- Theme
   use { 'gruvbox-community/gruvbox' }
   use { 'vim-airline/vim-airline' }
+  use { 'airblade/vim-gitgutter' }
 
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
@@ -26,6 +27,7 @@ return require('packer').startup(function()
   use { 'michaeljsmith/vim-indent-object' }
   use { 'machakann/vim-sandwich' }
   use { 'easymotion/vim-easymotion' }
+  use { 'jiangmiao/auto-pairs' }
   use { 'wellle/targets.vim' }
 
 end)
