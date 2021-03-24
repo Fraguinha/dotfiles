@@ -32,6 +32,14 @@ local function try_loadstring(s, component, name)
 end
 
 _G.packer_plugins = {
+  ["completion-nvim"] = {
+    loaded = true,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/gruvbox"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"

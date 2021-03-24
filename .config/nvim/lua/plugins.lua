@@ -1,13 +1,26 @@
+-- Automatically install packer
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+end
+vim.cmd [[packadd packer.nvim]]
+
+-- Auto compile when there are changes in plugins.lua
+vim.cmd [[autocmd BufWritePost plugins.lua PackerSync]]
+
+-- Plugins
 return require('packer').startup(function()
 
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
 
   -- Theme
+  use { 'gruvbox-community/gruvbox' }
   use { 'vim-airline/vim-airline' }
 
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
+  use { 'nvim-lua/completion-nvim' }
 
   -- Extensions
   use { 'michaeljsmith/vim-indent-object' }
@@ -16,4 +29,3 @@ return require('packer').startup(function()
   use { 'wellle/targets.vim' }
 
 end)
-

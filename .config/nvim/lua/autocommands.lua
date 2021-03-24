@@ -7,4 +7,3 @@ vim.cmd [[autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}]]
 
 -- Remove trailing whitespace
 vim.cmd [[autocmd BufWritePre * %s/\s\+$//e]]
-
