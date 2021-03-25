@@ -36,7 +36,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Light",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   "workbench.editorAssociations": [
@@ -166,16 +166,26 @@
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
   // LaTeX
-  "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.message.update.show": false,
+  "latex.build.executable": "latexmk",
+  "latex.build.args": [
+    "-f",
+    "-pdf",
+    "-interaction=nonstopmode",
+    "-synctex=1",
+    "%f"
+  ],
+  "latex.build.onSave": true,
+  "latex.lint.onChange": true,
+  "latex.lint.onSave": true,
   // Spell Check
   "cSpell.language": "en,pt",
   "cSpell.userWords": [
     "topologias"
   ],
-  // Extensions
-  "extensions.ignoreRecommendations": true,
+  // liveshare
   "liveshare.presence": true,
   "liveshare.audio.joinCallBehavior": "accept",
   "liveshare.audio.startCallOnShare": true,
+  // Extensions
+  "extensions.ignoreRecommendations": true,
 }
