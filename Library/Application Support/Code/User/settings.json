@@ -36,7 +36,7 @@
   "workbench.settings.openDefaultSettings": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Light",
+  "workbench.colorTheme": "GitHub Dark",
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
   "workbench.editorAssociations": [
