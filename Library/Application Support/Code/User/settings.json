@@ -174,7 +174,6 @@
     "-synctex=1",
     "%f"
   ],
-  "latex.build.onSave": true,
   "latex.lint.onChange": true,
   "latex.lint.onSave": true,
   // Spell Check
@@ -182,6 +181,8 @@
   "cSpell.userWords": [
     "topologias"
   ],
+  // PDF
+  "pdf-preview.default.scale": "page-fit",
   // liveshare
   "liveshare.presence": true,
   "liveshare.audio.joinCallBehavior": "accept",
