@@ -117,17 +117,18 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 
-# Haskell
-
-export PATH="$HOME/.cabal/bin:$PATH"
-
 # Opam
 
 if [[ -f ~/.opam/opam-init/init.zsh ]]; then
   . ~/.opam/opam-init/init.zsh
 fi
 
-# Cargo
+# Haskell
+if [[ -f ~/.ghcup/env ]]; then
+  . ~/.ghcup/env
+fi
+
+# Rust
 if [[ -f ~/.cargo/env ]]; then
   . ~/.cargo/env
 fi
