@@ -106,6 +106,21 @@ if [[ -f ~/.functions.zsh ]]; then
   . ~/.functions.zsh
 fi
 
+# Homebrew
+
+export PATH="/usr/local/sbin:$PATH"
+
+# C
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+# Java
+
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Haskell
+
+export PATH="$HOME/.cabal/bin:$PATH"
+
 # Opam
 
 if [[ -f ~/.opam/opam-init/init.zsh ]]; then
@@ -116,15 +131,3 @@ fi
 if [[ -f ~/.cargo/env ]]; then
   . ~/.cargo/env
 fi
-
-# Homebrew
-
-export PATH="/usr/local/sbin:$PATH"
-
-# Java
-
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# Haskell
-
-export PATH="$HOME/.cabal/bin:$PATH"
