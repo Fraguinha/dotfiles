@@ -4,26 +4,26 @@
   signingkey = 5CB50A9B2DCCE3DD
 [gpg]
   program = gpg
-[tag]
-  forceSignAnnotated = true
 [commit]
   gpgsign = true
+[core]
+  pager = less
+  editor = nvim
+  excludesfile = ~/.gitignore
+[init]
+	defaultBranch = master
+[tag]
+  forceSignAnnotated = true
 [pull]
   rebase = false
 [push]
   default = current
 [color]
   ui = true
-[core]
-  pager = less
-  editor = nvim
-  excludesfile = ~/.gitignore
+[advice]
+	addIgnoredFile = false
 [filter "lfs"]
   process = git-lfs filter-process
   smudge = git-lfs smudge -- %f
   clean = git-lfs clean -- %f
   required = true
-[advice]
-	addIgnoredFile = false
-[init]
-	defaultBranch = master
