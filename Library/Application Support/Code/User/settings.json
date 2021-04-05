@@ -1,22 +1,18 @@
 {
   // Window
-  "window.title": "${appName}${separator}${activeEditorShort}${separator}${rootName}",
+  "window.title": "${appName}",
   "window.autoDetectColorScheme": true,
   "window.restoreFullscreen": true,
+  "window.zoomLevel": 0,
   // Explorer
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   // Files
   "files.simpleDialog.enable": true,
-  "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
+  "files.insertFinalNewline": true,
   "files.enableTrash": true,
-  "files.associations": {
-    "*.mli": "ocaml",
-    "*.cu": "cpp",
-    "*.cuh": "cpp"
-  },
   "files.exclude": {
     "**/.classpath": true,
     "**/.project": true,
@@ -27,24 +23,16 @@
     "**/node_modules": true
   },
   // Workbench
-  "workbench.startupEditor": "none",
-  "workbench.editor.tabCloseButton": "left",
+  "workbench.startupEditor": "newUntitledFile",
   "workbench.commandPalette.history": 0,
-  "workbench.editor.restoreViewState": true,
-  "workbench.tree.renderIndentGuides": "none",
-  "workbench.list.automaticKeyboardNavigation": false,
-  "workbench.settings.openDefaultSettings": false,
+  "workbench.list.smoothScrolling": true,
+  "workbench.editor.restoreViewState": false,
   "workbench.settings.editor": "json",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "GitHub Dark",
-  "workbench.preferredLightColorTheme": "GitHub Light",
+  // Theme
+  "workbench.preferredLightColorTheme": "GitHub Dark",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
-    }
-  ],
+  "workbench.colorTheme": "GitHub Dark",
   // Zen
   "zenMode.centerLayout": false,
   // Neovim
@@ -53,40 +41,38 @@
   // Editor
   "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
+  "editor.wrappingStrategy": "advanced",
   "editor.wrappingIndent": "deepIndent",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "editor.tabCompletion": "on",
-  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnEnter": "smart",
   // Suggestions
-  "editor.suggestSelection": "recentlyUsedByPrefix",
-  "editor.snippetSuggestions": "top",
   "editor.wordBasedSuggestions": false,
   "editor.quickSuggestionsDelay": 0,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   // Visual
   "editor.minimap.enabled": false,
-  "editor.overviewRulerBorder": false,
+  "editor.overviewRulerBorder": true,
   "editor.selectionHighlight": false,
   "editor.occurrencesHighlight": false,
-  "editor.renderLineHighlight": "none",
-  "editor.renderWhitespace": "none",
-  "editor.renderIndentGuides": false,
   "editor.cursorSmoothCaretAnimation": true,
   "editor.scrollBeyondLastLine": false,
   "editor.smoothScrolling": true,
   "editor.rulers": [
     {
       "column": 80,
-      "color": "#2979FF40"
+      "color": "#5698FD44"
     },
     {
       "column": 120,
-      "color": "#2979FF40"
+      "color": "#5698FD44"
     }
   ],
   // source
@@ -94,54 +80,41 @@
     "source.organizeImports": true,
     "source.fixAll": true
   },
+  // Output
+  "[Log]": {
+    "editor.fontSize": 14,
+  },
   // Debug
   "debug.console.fontFamily": "JetBrains Mono, monospace",
+  "debug.console.fontSize": 14,
   "debug.inlineValues": true,
   // Terminal
-  "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontFamily": "JetBrains Mono, monospace",
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.cursorBlinking": true,
   "terminal.integrated.showExitAlert": false,
   // Git
-  "diffEditor.ignoreTrimWhitespace": false,
-  "git.postCommitCommand": "sync",
+  "git.allowForcePush": true,
   "git.enableSmartCommit": true,
+  "git.postCommitCommand": "sync",
   "git.confirmSync": false,
   "git.autofetch": true,
   // C
-  "C_Cpp.clang_format_fallbackStyle": "Google",
-  "C_Cpp.clang_format_sortIncludes": false,
+  "C_Cpp.clang_format_fallbackStyle": "Visual Studio",
   "C_Cpp.default.cppStandard": "c++20",
-  "C_Cpp.default.cStandard": "c11",
+  "C_Cpp.default.cStandard": "c17",
   // Java
-  "java.semanticHighlighting.enabled": true,
   "java.referencesCodeLens.enabled": true,
   "java.implementationsCodeLens.enabled": true,
   "java.codeGeneration.generateComments": true,
   "java.completion.guessMethodArguments": true,
-  "java.format.comments.enabled": true,
   "java.refactor.renameFromFileExplorer": "autoApply",
-  "sonarlint.rules": {
-    "java:S106": {
-      "level": "off"
-    },
-    "java:S2189": {
-      "level": "off"
-    },
-    "java:S1192": {
-      "level": "off"
-    }
-  },
   // Python
   "python.languageServer": "Pylance",
   "python.defaultInterpreterPath": "/usr/local/bin/python3",
+  "python.pythonPath": "/usr/local/bin/python3",
   "python.formatting.provider": "autopep8",
   "python.analysis.diagnosticPublishDelay": 0,
-  "python.linting.pylintUseMinimalCheckers": false,
-  "python.testing.pytestArgs": [],
-  "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false,
-  "python.testing.pytestEnabled": true,
   // OCaml
   "ocaml.terminal.shell.osx": "/bin/zsh",
   "[ocaml]": {
@@ -155,7 +128,7 @@
   "dart.openDevTools": "flutter",
   // HTML & CSS
   "css.styleSheets": [
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css",
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css",
     "/style.css",
     "style.css",
     "${fileBasenameNoExtension}.css"
@@ -163,8 +136,21 @@
   // Javascript/Typescript
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
+  // Sonar Lint
+  "sonarlint.rules": {
+    "java:S106": {
+      "level": "off"
+    },
+    "java:S2189": {
+      "level": "off"
+    },
+    "java:S1192": {
+      "level": "off"
+    }
+  },
   // Markdown
   "markdown.preview.fontFamily": "JetBrains Mono, monospace",
+  "markdown.preview.fontSize": 14,
   // LaTeX
   "latex.build.executable": "latexmk",
   "latex.build.args": [
@@ -179,7 +165,7 @@
   // Spell Check
   "cSpell.language": "en,pt",
   "cSpell.userWords": [
-    "topologias"
+    "rebalance"
   ],
   // PDF
   "pdf-preview.default.scale": "page-fit",
@@ -189,4 +175,10 @@
   "liveshare.audio.startCallOnShare": true,
   // Extensions
   "extensions.ignoreRecommendations": true,
+  "workbench.editorAssociations": [
+    {
+      "viewType": "jupyter.notebook.ipynb",
+      "filenamePattern": "*.ipynb"
+    }
+  ],
 }
