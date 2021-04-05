@@ -1,6 +1,3 @@
--- LSP
-require('lsp')
-
 -- Settings
 require('settings')
 
@@ -12,6 +9,9 @@ require('autocommands')
 
 -- Install plugins
 require('plugins')
+
+-- LSP
+require('lsp')
 
 -- Configuration
 require('config')

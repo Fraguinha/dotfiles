@@ -62,8 +62,9 @@ _G.packer_plugins = {
     path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/vim-airline"
   },
   ["vim-easymotion"] = {
-    loaded = true,
-    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/vim-easymotion"
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/opt/vim-easymotion"
   },
   ["vim-gitgutter"] = {
     loaded = true,
@@ -76,8 +77,22 @@ _G.packer_plugins = {
   ["vim-sandwich"] = {
     loaded = true,
     path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/start/vim-sandwich"
+  },
+  ["vscode-easymotion"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/Users/fraguinha/.local/share/nvim/site/pack/packer/opt/vscode-easymotion"
   }
 }
+
+-- Conditional loads
+if try_loadstring("\27LJ\2\n8\0\0\1\0\3\0\t6\0\0\0009\0\1\0009\0\2\0\v\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0L\0\2\0\vvscode\6g\bvim\0", "condition", '{ "vscode-easymotion" }') then
+	vim.cmd [[packadd vscode-easymotion]]
+end
+
+if try_loadstring("\27LJ\2\n8\0\0\1\0\3\0\t6\0\0\0009\0\1\0009\0\2\0\n\0\0\0X\0\2€+\0\1\0X\1\1€+\0\2\0L\0\2\0\vvscode\6g\bvim\0", "condition", '{ "vim-easymotion" }') then
+	vim.cmd [[packadd vim-easymotion]]
+end
 
 END
 
