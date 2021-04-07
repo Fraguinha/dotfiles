@@ -30,5 +30,5 @@ return require('packer').startup(function()
   use { 'asvetliakov/vim-easymotion', cond = function() return vim.g.vscode ~= nil end, as = "vscode-easymotion" }
   use 'jiangmiao/auto-pairs'
   use 'wellle/targets.vim'
-
+  use 'tpope/vim-repeat'
 end)

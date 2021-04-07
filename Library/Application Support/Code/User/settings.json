@@ -38,6 +38,7 @@
   // Neovim
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "editor.lineNumbers": "relative",
   // Editor
   "editor.fontFamily": "JetBrains Mono, monospace",
   "editor.fontLigatures": true,
