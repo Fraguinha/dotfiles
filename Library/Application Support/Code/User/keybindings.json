@@ -1,5 +1,22 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
+  // Reload VSCode
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.reloadWindow"
+  },
+  // Which Key
+  {
+    "key": "shift+space",
+    "command": "whichkey.show",
+    "when": "!editorFocus && !inQuickOpen && !terminalFocus"
+  },
+  {
+    "key": "shift+space",
+    "command": "whichkey.show",
+    "when": "terminalFocus"
+  },
+  // Shortcut consistency
   {
     "key": "ctrl+shift+e",
     "command": "workbench.view.explorer"
@@ -49,13 +66,5 @@
   {
     "key": "cmd+shift+x",
     "command": "workbench.view.extensions"
-  },
-  {
-    "key": "cmd+r",
-    "command": "workbench.action.reloadWindow"
-  },
-  {
-    "key": "cmd+shift+[Semicolon]",
-    "command": "workbench.action.terminal.toggleTerminal"
   }
 ]
