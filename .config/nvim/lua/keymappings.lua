@@ -7,7 +7,7 @@ vim.g.mapleader = ' '
 utils.map('n', 'Y', 'y$')
 
 -- Redo
-utils.map('n', 'U','<c-r>')
+utils.map('n', 'U', '<c-r>')
 
 -- Clear highlights
 utils.map('n', '<c-l>', '<cmd>nohl<cr>')

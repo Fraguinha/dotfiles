@@ -17,18 +17,12 @@ return require('packer').startup(function()
   -- Theme
   use 'gruvbox-community/gruvbox'
   use 'vim-airline/vim-airline'
-  use 'airblade/vim-gitgutter'
-
-  -- LSP and completion
-  use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
 
   -- Extensions
   use 'michaeljsmith/vim-indent-object'
   use 'machakann/vim-sandwich'
-  use { 'easymotion/vim-easymotion', cond = function() return vim.g.vscode == nil end }
-  use { 'asvetliakov/vim-easymotion', cond = function() return vim.g.vscode ~= nil end, as = "vscode-easymotion" }
   use 'jiangmiao/auto-pairs'
   use 'wellle/targets.vim'
+  use 'tpope/vim-commentary'
   use 'tpope/vim-repeat'
 end)

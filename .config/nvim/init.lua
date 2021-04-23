@@ -7,11 +7,6 @@ require('keymappings')
 -- Auto commands
 require('autocommands')
 
--- Install plugins
+-- Plugins
 require('plugins')
-
--- LSP
-require('lsp')
-
--- Configuration
 require('config')
