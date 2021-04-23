@@ -9,12 +9,6 @@
   {
     "key": "shift+space",
     "command": "whichkey.show",
-    "when": "!editorFocus && !inQuickOpen && !terminalFocus"
-  },
-  {
-    "key": "shift+space",
-    "command": "whichkey.show",
-    "when": "terminalFocus"
   },
   // Shortcut consistency
   {

@@ -33,7 +33,7 @@
   // Theme
   "workbench.preferredLightColorTheme": "GitHub Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
-  "workbench.colorTheme": "GitHub Dark",
+  "workbench.colorTheme": "GitHub Light",
   // Zen
   "zenMode.centerLayout": false,
   // Editor
@@ -54,6 +54,8 @@
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.suggest.snippetsPreventQuickSuggestions": false,
   // Visual
+  "editor.semanticHighlighting.enabled": true,
+  "editor.showFoldingControls": "always",
   "editor.minimap.enabled": false,
   "editor.overviewRulerBorder": true,
   "editor.selectionHighlight": false,
@@ -83,6 +85,7 @@
   // Neovim
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.mouseSelectionStartVisualMode": true,
+  "vscode-neovim.textDecorationsAtTop": true,
   // Debug
   "debug.console.fontFamily": "JetBrains Mono, monospace",
   "debug.console.fontSize": 14,
@@ -107,7 +110,6 @@
   "java.implementationsCodeLens.enabled": true,
   "java.codeGeneration.generateComments": true,
   "java.completion.guessMethodArguments": true,
-  "java.refactor.renameFromFileExplorer": "autoApply",
   // Python
   "python.languageServer": "Pylance",
   "python.formatting.provider": "black",
@@ -123,6 +125,8 @@
   "[ocaml]": {
     "editor.defaultFormatter": "ocamllabs.ocaml-platform"
   },
+  // Lua
+  "Lua.telemetry.enable": true,
   // Dart
   "dart.openDevTools": "flutter",
   // HTML & CSS
@@ -133,6 +137,8 @@
     "${fileBasenameNoExtension}.css"
   ],
   // Javascript/Typescript
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "javascript.referencesCodeLens.enabled": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   // Sonar Lint
@@ -1482,12 +1488,6 @@
       "name": "Focus 8th editor group",
       "type": "command",
       "command": "workbench.action.focusEighthEditorGroup"
-    }
-  ],
-  "workbench.editorAssociations": [
-    {
-      "viewType": "jupyter.notebook.ipynb",
-      "filenamePattern": "*.ipynb"
     }
   ]
 }
