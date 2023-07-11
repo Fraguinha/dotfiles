@@ -1,0 +1,9 @@
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/Fraguinha/nvim
+[submodule ".config/karabiner"]
+	path = .config/karabiner
+	url = https://github.com/Fraguinha/karabiner
+[submodule ".config/wezterm"]
+	path = .config/wezterm
+	url = https://github.com/Fraguinha/wezterm

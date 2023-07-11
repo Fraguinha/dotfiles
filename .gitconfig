@@ -1,0 +1,42 @@
+[user]
+  name = João Fraga
+  email = joao@fraguinha.com
+  signingkey = E8519CFBD01E1F2C
+[gpg]
+  program = gpg
+[core]
+  pager = less
+  editor = nvim
+  excludesfile = ~/.gitignore
+[rerere]
+  enabled = true
+  autoUpdate = true
+[filter "lfs"]
+  process = git-lfs filter-process
+  smudge = git-lfs smudge -- %f
+  clean = git-lfs clean -- %f
+  required = true
+[http]
+  postBuffer = 1048576000
+[alias]
+  aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  nuke = "!f(){ git reset $(git commit-tree HEAD^{tree} -m \"${1:-reset repository}\");};f"
+  reword = commit --amend
+  uncommit = reset --soft HEAD~1
+  untrack = rm -r --cache --
+[init]
+  defaultBranch = main
+[commit]
+  gpgsign = true
+[fetch]
+  prune = true
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+[push]
+  default = current
+  autoSetupRemote = true
+[tag]
+  forceSignAnnotated = true
+  sort = version:refname
