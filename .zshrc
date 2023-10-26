@@ -25,20 +25,21 @@ export NVM_DIR="$HOME/.nvm"
 # syntax highlighting
 source /usr/local/opt/zsh-fast-syntax-highlighting/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+# auto complete
+source /usr/local/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
+bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
+
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+zstyle ':autocomplete:*history*:*' insert-unambiguous yes
+zstyle ':autocomplete:menu-search:*' insert-unambiguous yes
+
 # auto suggestions
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# history
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 # auto pair
 source /usr/local/share/zsh-autopair/autopair.zsh
-
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
-HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
 
 # starship
 eval "$(starship init zsh)"
