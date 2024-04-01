@@ -1,9 +1,9 @@
 [user]
   name = João Fraga
   email = joao@fraguinha.com
-  signingkey = E8519CFBD01E1F2C
+  signingkey = /home/fraguinha/.ssh/id_rsa.pub
 [gpg]
-  program = gpg
+  format = ssh
 [core]
   pager = less
   editor = nvim
