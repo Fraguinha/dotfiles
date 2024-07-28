@@ -7,3 +7,9 @@
 [submodule ".config/wezterm"]
 	path = .config/wezterm
 	url = https://github.com/Fraguinha/wezterm
+[submodule "systemd"]
+	path = systemd
+	url = git@github.com:Fraguinha/systemd.git
+[submodule ".config/systemd"]
+	path = .config/systemd
+	url = git@github.com:Fraguinha/systemd.git

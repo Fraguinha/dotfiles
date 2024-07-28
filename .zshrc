@@ -16,6 +16,9 @@ bindkey -M menuselect '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 
 source /home/linuxbrew/.linuxbrew/share/zsh-autopair/autopair.zsh
 
+# SSH
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # History
 export HISTSIZE=100000
 export SAVEHIST=100000
