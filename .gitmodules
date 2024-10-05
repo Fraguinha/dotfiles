@@ -1,0 +1,9 @@
+[submodule ".config/wezterm"]
+	path = .config/wezterm
+	url = git@github.com:fraguinha/wezterm.git
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = git@github.com:fraguinha/nvim.git
+[submodule ".config/k9s"]
+	path = .config/k9s
+	url = git@github.com:fraguinha/k9s.git
