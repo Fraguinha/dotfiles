@@ -24,6 +24,7 @@ bindkey -M menuselect "$terminfo[kcbt]" reverse-menu-complete
 zi light fraguinha/H-S-MW
 
 zstyle ":history-search-multi-word" highlight-color "fg=yellow"
+zstyle ":history-search-multi-word" background-color ""
 zstyle ":plugin:history-search-multi-word" active "bold,underline"
 
 bindkey '^p' history-search-backward
@@ -77,6 +78,10 @@ source "$HOME/.variables.zsh"
 # java
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# go
+export GVM_DIR="$HOME/.gvm"
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 # javascript
 export NVM_DIR="$HOME/.nvm"
