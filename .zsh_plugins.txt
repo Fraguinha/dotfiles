@@ -1,0 +1,6 @@
+zsh-users/zsh-completions kind:fpath
+zsh-users/zsh-autosuggestions
+fraguinha/H-S-MW path:functions kind:fpath
+fraguinha/H-S-MW
+hlissner/zsh-autopair
+z-shell/F-Sy-H
